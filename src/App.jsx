@@ -12,7 +12,7 @@ function App() {
   const handleSearch = async (query = '', page = 1) => {
     try {
       const searchReq = async function () {
-        const searchResultsJSON = await fetch(`http://api.searchspring.net/api/search/search.json?siteId=scmq7n&q=${query}&resultsFormat=native&page=${page}`);
+        const searchResultsJSON = await fetch(`https://api.searchspring.net/api/search/search.json?siteId=scmq7n&q=${query}&resultsFormat=native&page=${page}`);
         let searchResults = await searchResultsJSON.json();
         setPagination(searchResults.pagination);
         setCurrentProducts(searchResults.results);
