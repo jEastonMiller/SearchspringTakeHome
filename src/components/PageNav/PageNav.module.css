@@ -1,0 +1,15 @@
+.pageNav div{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageLink {
+  margin: 0 0.5em;
+}
+
+.pageLink:hover {
+  text-decoration: underline;
+  color: blue;
+}
