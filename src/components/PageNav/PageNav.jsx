@@ -35,7 +35,6 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
 
     useEffect(() => {
       handlePager();
-      console.log('pager: ', pager)
     }, [])
 
     return (

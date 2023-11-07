@@ -16,8 +16,6 @@ function App() {
         let searchResults = await searchResultsJSON.json();
         setPagination(searchResults.pagination);
         setCurrentProducts(searchResults.results);
-        // console.log(searchResults);
-        console.log('pagination change: ', pagination);
       }
       searchReq();
     } catch (err) {
