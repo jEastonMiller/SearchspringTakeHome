@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./Searchbar.module.css";
 
-function Searchbar({ setSearchQuery, handleTest }) {
+function Searchbar({ setSearchQuery }) {
   const [currentInput, setCurrentInput] = useState('');
 
   const inputRef = useRef(null);
@@ -16,7 +16,6 @@ function Searchbar({ setSearchQuery, handleTest }) {
   }
 
   const handleKeyDown = e => {    
-    console.log('click');
     if (e.key === 'Enter') buttonRef.current.click();  
   };
 

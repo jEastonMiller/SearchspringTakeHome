@@ -1,5 +1,57 @@
+@-webkit-keyframes fade {
+  0% {opacity: 0;}
+  20% {opacity: 1;}
+  85% {opacity: 1;}
+  98% {opacity: 0;}
+  100% {opacity: 0;}
+}
+@keyframes fade {
+  0% {opacity: 0;}
+  20% {opacity: 1;}
+  85% {opacity: 1;}
+  98% {opacity: 0;}
+  100% {opacity: 0;}
+}
 .landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3.0em;
+  overflow: hidden;
   
+}
+
+.landing img {
+  width: 120%;
+  height: calc(0.35 * 90vw);
+  object-fit: cover;
+
+}
+
+#trendContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90%;
+  margin: 0;
+  padding: 0;
+  transition: color 0.4s;
+}
+
+#trendContainer p {
+  padding: 0.5em 0;
+}
+
+.trend {
+  padding: 0.5em 0;
+}
+
+.trend:hover {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 
