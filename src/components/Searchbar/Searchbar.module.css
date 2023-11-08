@@ -2,13 +2,10 @@
   position: relative;
   width: 25vw;
   margin: 1em auto;
-  
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
-  
 }
 
 .searchbar input {
@@ -23,7 +20,7 @@
   font-family: Castoro Titling;
   transition: border-color 0.3s;
   font-size: 1.25em;
-  
+  background: none;
 }
 
 .searchbar input:focus {

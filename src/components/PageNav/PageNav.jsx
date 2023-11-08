@@ -7,34 +7,49 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
     const [skipNav, setSkipNav] = useState(false);
 
     const handlePager = () => {
-      
       const pagerFormat = []
-      if(pagination.totalPages > 50) {
+
+      if(pagination.totalPages > 25) {
         
-        
-        for (let i = 1; i < 11; i++) {
-          pagerFormat.push({
-            number: i,
-          })
-
-
-        } 
-        pagerFormat.push('...');
-        setSkipNav(true);
-      } else if (pagination.totalPages > 10) {
-
-        pagerFormat.push('...');
-        for(let i = 5; i > 0; i--) {
-          pagerFormat.unshift({
-            number: i
-          });
-          pagerFormat.push({
-            number: pagination.totalPages - i + 1
-          });
-          
+        if (pagination.totalPages - pagination.currentPage < 6) {
+          const total = pagination.totalPages
+          for (let i = 1; i <= 3; i++) {
+            pagerFormat.push({
+              number: i,
+            })
+          }
+          pagerFormat.push('...');
+          for (let i = total - 6; i < total + 1; i++) {
+            pagerFormat.push({
+              number: i,
+            })
+          }
+        } else if(pagination.currentPage > 5) {
+          const current = pagination.currentPage;
+          const total = pagination.totalPages
+          for (let i = current - 3; i < current + 3; i++) {
+            pagerFormat.push({
+              number: i,
+            })
+          }
+          pagerFormat.push('...');
+          for (let i = total - 3; i < total + 1; i++) {
+            pagerFormat.push({
+              number: i,
+            })
+          }
+        } else {
+          for (let i = 1; i < 11; i++) {
+            pagerFormat.push({
+              number: i,
+            })
+          } 
+          pagerFormat.push('...');
         }
+        setSkipNav(true);
       } else {
         for (let i = 1; i <= pagination.totalPages; i++) pagerFormat.push({number: i})
+        setSkipNav(false);
       }
       setPager(pagerFormat);
     }
@@ -47,13 +62,16 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
       <div className={styles.pageNav}>
 
         {pager && <div>
-          {skipNav && pagination.currentPage === 1 ? 
-            <button id={styles.skipBackD} disabled></button> : 
-            <button id={styles.skipBack}></button>
-          } 
-          {pagination.currentPage === 1 ? 
+          {skipNav && pagination.previousPage === 0 && <button id={styles.skipBack} disabled></button>}
+          {skipNav && pagination.previousPage !== 0 && 
             <button 
-              id={styles.backD}
+              id={styles.skipBack} 
+              onClick={(e) => handleSearch(searchQuery)}
+            ></button>
+          }
+          {pagination.previousPage === 0 ? 
+            <button 
+              id={styles.back}
               disabled
             ></button> : 
             <button
@@ -62,20 +80,28 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
             ></button>
           } 
           {pager.map((page, index) => {
-            return typeof(page) !== 'string' ? 
-              <button
-                className={styles.pageLink}
-                onClick={(e) => handleSearch(searchQuery, page.number)}
-                key={index}
-              >{page.number}</button> : 
-              <p
-                className={styles.pageEl}
-                key={index}
-              >{page}</p>
+            if ( typeof(page) === 'string' ) {
+              return <p
+                      className={styles.pageEl}
+                      key={index}
+                     >{page}</p>
+            } else if (pagination.currentPage === page.number) {
+              return <button
+                      className={styles.currentSelection}
+                      key={index}
+                      disabled
+                     >{page.number}</button> 
+            } else {
+              return <button
+                      className={styles.pageLink}
+                      onClick={(e) => handleSearch(searchQuery, page.number)}
+                      key={index}
+                     >{page.number}</button> 
+            }
           })}
           {pagination.nextPage === 0 ? 
             <button 
-              id={styles.forwardD}
+              id={styles.forward}
               disabled
             ></button> : 
             <button
@@ -83,10 +109,13 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
               onClick={(e) => handleSearch(searchQuery, pagination.currentPage + 1)}
             ></button>
           } 
-          {skipNav && pagination.currentPage !== pagination.totalPages ? 
-            <button id={styles.skipForwardD}></button> :  
-            <button id={styles.skipForward} disabled></button>
-          }  
+          {skipNav && pagination.currentPage === pagination.totalPages && <button id={styles.skipForward} disabled></button>}
+          {skipNav && pagination.currentPage !== pagination.totalPages && 
+            <button 
+              id={styles.skipForward}
+              onClick={(e) => handleSearch(searchQuery, pagination.totalPages)}
+            ></button>
+          }
         </div>}
         
       </div>

@@ -17,7 +17,7 @@ function Product( {
 
     return (
       <div className={styles.product}>
-        <img src={thumbnail}></img>
+        <img src={thumbnail} alt={name}></img>
         <div>
           <p className={styles.name}>{name}</p>
           <div className={styles.productDetails}>
@@ -29,7 +29,6 @@ function Product( {
             
             >Add To Cart</button>
           </div>
-          
         </div>
         
         

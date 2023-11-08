@@ -5,6 +5,7 @@ function Searchbar({ setSearchQuery, handleTest }) {
   const [currentInput, setCurrentInput] = useState('');
 
   const inputRef = useRef(null);
+  const buttonRef = useRef(null);
 
   const focus = () => {
     inputRef.current.focus();
@@ -14,8 +15,9 @@ function Searchbar({ setSearchQuery, handleTest }) {
     setCurrentInput(event.target.value)
   }
 
-  const handleKeypress = e => {    
-    if (e.keyCode === 13) handleSubmit();  
+  const handleKeyDown = e => {    
+    console.log('click');
+    if (e.key === 'Enter') buttonRef.current.click();  
   };
 
   useEffect(() => {
@@ -27,12 +29,13 @@ function Searchbar({ setSearchQuery, handleTest }) {
         <input
           onChange={handleOnChange}
           onClick={focus}
+          onKeyDown={handleKeyDown}
           value={currentInput}
           ref={inputRef}
         ></input>
         <button
           onClick={(e) => setSearchQuery(currentInput)}
-          
+          ref={buttonRef}
         ></button>
     </div>
   )

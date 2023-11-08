@@ -16,11 +16,20 @@
   font-style: Castoro Titling;
   font-size: 1.0em;
   color: rgba(196, 190, 176, 1.0);
+  transition: text-decoration 0.7s;
 }
 
 .pageLink:hover {
   text-decoration: underline;
-  color: blue;
+}
+
+.currentSelection {
+  margin: 1em;
+  border: none;
+  background: none;
+  font-style: Castoro Titling;
+  font-size: 1.0em;
+  color: rgba(196, 190, 176, 1.0);
 }
 
 .pageEl {
@@ -29,98 +38,33 @@
   margin-right: 1.0em;
 }
 
-#back {
+button {
   height: 2.25em;
   width: 2.25em;
   background: none;
-  background-image: url('../../../public/assets/b.png'); /* Path to your PNG image */
-  background-size: cover; /* Adjust to your preferred size */
+  background-size: cover; 
   background-repeat: no-repeat;
   background-position: center center;
   border: none;
   cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+} 
+
+#back {
+  background-image: url('../../../public/assets/b.png'); 
 }
 
 #skipBack {
-  height: 2.25em;
-  width: 2.25em;
-  background: none;
-  background-image: url('../../../public/assets/b_skip.png'); /* Path to your PNG image */
-  background-size: cover; /* Adjust to your preferred size */
-  background-repeat: no-repeat;
-  background-position: center center;
-  border: none;
-  cursor: pointer;
+  background-image: url('../../../public/assets/b_skip.png'); 
 }
 
 #forward {
-  height: 2.25em;
-  width: 2.25em;
-  background: none;
-  background-image: url('../../../public/assets/f.png'); /* Path to your PNG image */
-  background-size: cover; /* Adjust to your preferred size */
-  background-repeat: no-repeat;
-  background-position: center center;
-  border: none;
-  cursor: pointer;
+  background-image: url('../../../public/assets/f.png'); 
 }
 
 #skipForward {
-  height: 2.25em;
-  width: 2.25em;
-  background: none;
-  background-image: url('../../../public/assets/f_skip.png'); /* Path to your PNG image */
-  background-size: cover; /* Adjust to your preferred size */
-  background-repeat: no-repeat;
-  background-position: center center;
-  border: none;
-  cursor: pointer;
-}
-
-#backD {
-  height: 2.25em;
-  width: 2.25em;
-  background: none;
-  background-image: url('../../../public/assets/b.png'); /* Path to your PNG image */
-  background-size: cover; /* Adjust to your preferred size */
-  background-repeat: no-repeat;
-  background-position: center center;
-  border: none;
-  opacity: 0.7;
-}
-
-#skipBackD {
-  height: 2.25em;
-  width: 2.25em;
-  background: none;
-  background-image: url('../../../public/assets/b_skip.png'); /* Path to your PNG image */
-  background-size: cover; /* Adjust to your preferred size */
-  background-repeat: no-repeat;
-  background-position: center center;
-  border: none;
-  opacity: 0.7;
-}
-
-#forwardD {
-  height: 2.25em;
-  width: 2.25em;
-  background: none;
-  background-image: url('../../../public/assets/f.png'); /* Path to your PNG image */
-  background-size: cover; /* Adjust to your preferred size */
-  background-repeat: no-repeat;
-  background-position: center center;
-  border: none;
-  opacity: 0.7;
-}
-
-#skipForwardD {
-  height: 2.25em;
-  width: 2.25em;
-  background: none;
-  background-image: url('../../../public/assets/f_skip.png'); /* Path to your PNG image */
-  background-size: cover; /* Adjust to your preferred size */
-  background-repeat: no-repeat;
-  background-position: center center;
-  border: none;
-  opacity: 0.7;
+  background-image: url('../../../public/assets/f_skip.png'); 
 }
