@@ -2,9 +2,12 @@
   border: 1px black solid;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100vw;
   
-  position: sticky;
-  top: 0;
+  
+  position: relative;
+  top: -15px;
   left: 0;
   right: 0;
   height: 80px;
@@ -16,4 +19,28 @@
 
 .navBar li {
   margin: 20px;
+}
+
+.logo {
+  margin: 2em;
+  font-size: 0.8em;
+ 
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+}
+
+
+.logo img {
+  height: 20px;
+  width: auto;
+  margin: 1em;
+}
+
+.mainNav {
+  
+}
+
+#cartButton {
+  margin: 3em;
 }

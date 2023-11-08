@@ -1,7 +1,5 @@
 .searchbar {
   position: relative;
-  border: rgba(58, 35, 173, 0.45) solid 0.2em;
-  border-radius: 0.2em;
   width: 25vw;
   margin: 1em auto;
   
@@ -10,15 +8,37 @@
   justify-content: center;
   align-items: center;
 
+  
 }
 
 .searchbar input {
   border: none;
   margin: 0.5em;
+  height: 1.5em;
+  width: 30vw;
+  min-width: 175px;
+  max-width: 300px;
+  border-bottom: rgba(196, 190, 176, 0.4) 1px solid;
+  color: rgba(198, 187, 165, 1.0);
+  font-family: Castoro Titling;
+  transition: border-color 0.3s;
+  font-size: 1.25em;
   
 }
 
 .searchbar input:focus {
+  outline: none;
+  border-color: rgba(196, 190, 176, 1.0);
+}
+
+.searchbar button {
+  height: 1.5em;
+  width: 1.5em;
+  background: none;
+  background-image: url('../../../public/assets/search_icon.png'); /* Path to your PNG image */
+  background-size: cover; /* Adjust to your preferred size */
+  background-repeat: no-repeat;
+  background-position: center center;
   border: none;
-  box-glow:none;
+  cursor: pointer;
 }

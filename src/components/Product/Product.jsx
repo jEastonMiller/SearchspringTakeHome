@@ -18,11 +18,21 @@ function Product( {
     return (
       <div className={styles.product}>
         <img src={thumbnail}></img>
-        <p>{name}</p>
-        <div className={styles.costSection}>
-          <p className={styles.price}>${price}</p>
-          {msrpActive && <p className={styles.msrp}><s>${prodMsrp}</s></p>}
+        <div>
+          <p className={styles.name}>{name}</p>
+          <div className={styles.productDetails}>
+            <div className={styles.costSection}>
+              <p className={styles.price}>${price}</p>
+              {msrpActive && <p className={styles.msrp}><s>${prodMsrp}</s></p>}
+            </div>
+            <button
+            
+            >Add To Cart</button>
+          </div>
+          
         </div>
+        
+        
       </div>
     )
 }

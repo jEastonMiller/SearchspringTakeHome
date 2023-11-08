@@ -10,10 +10,13 @@ function Searchbar({ setSearchQuery, handleTest }) {
     inputRef.current.focus();
   };
 
-
   const handleOnChange = (event) => {
     setCurrentInput(event.target.value)
   }
+
+  const handleKeypress = e => {    
+    if (e.keyCode === 13) handleSubmit();  
+  };
 
   useEffect(() => {
     focus();
@@ -29,7 +32,8 @@ function Searchbar({ setSearchQuery, handleTest }) {
         ></input>
         <button
           onClick={(e) => setSearchQuery(currentInput)}
-        >Search</button>
+          
+        ></button>
     </div>
   )
 }

@@ -24,8 +24,13 @@ module.exports = {
       },
       {
         test: /\.(svg|png|jpg|jpeg|gif|ico)$/,
+        type: "asset/resource",
         exclude: /node_modules/,
-      }
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
     ]
   },
   devServer: {

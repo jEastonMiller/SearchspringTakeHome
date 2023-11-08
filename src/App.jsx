@@ -28,11 +28,12 @@ function App() {
     console.log('hello test success');
   }
 
-  useEffect(() => {
-    handleSearch();
-  }, [])
+  // useEffect(() => {
+  //   if (searchQuery) handleSearch();
+  // }, [])
 
   useEffect(() => {
+    // if (searchQuery) handleSearch(searchQuery, 1);
     handleSearch(searchQuery, 1);
   }, [searchQuery])
 

@@ -1,5 +1,21 @@
+@font-face {
+  font-family: 'Castoro Titling';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+    url('../public/fonts/castorotitling-regular-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Rosarivo';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+    url('../public/fonts/rosarivo-regular-webfont.woff') format('woff');
+}
+
 body {
-  
+  font-family: Rosarivo;
   
 }
 
