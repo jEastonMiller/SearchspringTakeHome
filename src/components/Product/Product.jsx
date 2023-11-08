@@ -19,9 +19,9 @@ function Product( {
       <div className={styles.product}>
         <img src={thumbnail}></img>
         <p>{name}</p>
-        <div>
-          <p>{price}</p>
-          {msrpActive && <p><s>{prodMsrp}</s></p>}
+        <div className={styles.costSection}>
+          <p className={styles.price}>${price}</p>
+          {msrpActive && <p className={styles.msrp}><s>${prodMsrp}</s></p>}
         </div>
       </div>
     )

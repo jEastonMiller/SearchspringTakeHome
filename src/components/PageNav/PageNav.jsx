@@ -3,7 +3,7 @@ import styles from "./PageNav.module.css";
 
 function PageNav( { pagination, handleSearch, searchQuery } ) {
     const [pager, setPager] = useState(null);
-    const [currentPage, setCurrentPage] = useState(pagination.currentPage);
+    // const [currentPage, setCurrentPage] = useState(pagination.currentPage);
     const [skipNav, setSkipNav] = useState(false);
 
     const handlePager = () => {
@@ -41,10 +41,10 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
       <div className={styles.pageNav}>
 
         {pager && <div>
-          {skipNav && currentPage === 1 ? <button disabled>Skip First</button> : <button>Skip First</button>} 
-          {currentPage === 1 ? <button disabled>Prev</button> : 
+          {skipNav && pagination.currentPage === 1 ? <button className={styles.skipNav} disabled>Skip First</button> : <button className={styles.skipNav}>Skip First</button>} 
+          {pagination.currentPage === 1 ? <button disabled>Prev</button> : 
           <button
-            onClick={(e) => handleSearch(searchQuery, currentPage - 1)}
+            onClick={(e) => handleSearch(searchQuery, pagination.currentPage - 1)}
           >Prev</button>} 
           {pager.map((page, index) => {
             return typeof(page) !== 'string' ? 
@@ -57,11 +57,11 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
             key={index}
             >{page}</p>
           })}
-          {currentPage === pagination.totalPages ? <button disabled>Next</button> : 
+          {pagination.currentPage === pagination.totalPages ? <button disabled>Next</button> : 
           <button
-            onClick={(e) => handleSearch(searchQuery, currentPage + 1)}
+            onClick={(e) => handleSearch(searchQuery, pagination.currentPage + 1)}
           >Next</button>} 
-          {skipNav && currentPage === 1 ? <button disabled>Skip Last</button> : <button>Skip Last</button>}  
+          {skipNav && pagination.currentPage !== pagination.totalPages ? <button className={styles.skipNav}>Skip Last</button> : <button className={styles.skipNav} disabled>Skip Last</button>}  
         </div>}
         
       </div>

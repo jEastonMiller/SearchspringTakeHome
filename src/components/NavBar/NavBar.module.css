@@ -1,3 +1,19 @@
 .navBar {
   border: 1px black solid;
+  display: flex;
+  align-items: center;
+  
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+}
+
+.navBar * {
+  display: inline;
+}
+
+.navBar li {
+  margin: 20px;
 }

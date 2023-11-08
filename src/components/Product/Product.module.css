@@ -1,3 +1,45 @@
 .product {
-  border: 1px black solid;
+  width: 20%;
+  height: auto;
+  margin: 2vw 1vw;
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+.product:hover {
+  
+
+}
+
+.product img {
+  width: 14em;
+  height: auto;
+  margin: 0.25em 0;
+
+  align-self: center;
+}
+
+.costSection {
+  display: flex;
+  flex-direction: row; /* This is the default, but you can specify it for clarity */
+  justify-content: flex-start;
+  align-items: center; /* You can adjust alignment as needed */
+  border: black 1px solid;
+}
+
+.price {
+  font-size: 2.0em;
+  margin-left: 0.25em;
+  width: 2.0em;
+  box-sizing: border-box;
+}
+
+.msrp {
+  color: hsla(0, 0, 0, 0.3);
+  margin: 0.5em;
+  width: 1.75em;
+  height: 1.0em;
+  box-sizing: border-box;
 }

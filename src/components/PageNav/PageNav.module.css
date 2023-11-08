@@ -5,6 +5,10 @@
   align-items: center;
 }
 
+.skipNav {
+  margin: 0.5em;
+}
+
 .pageLink {
   margin: 0 0.5em;
 }
