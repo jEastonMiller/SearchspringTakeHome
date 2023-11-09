@@ -58,9 +58,9 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
       handlePager();
     }, [pagination])
 
+    if(pagination.totalResults === 0) return;
     return (
       <div className={styles.pageNav}>
-
         {pager && <div>
           {skipNav && pagination.previousPage === 0 && <button id={styles.skipBack} disabled></button>}
           {skipNav && pagination.previousPage !== 0 && 
@@ -117,7 +117,6 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
             ></button>
           }
         </div>}
-        
       </div>
     )
 }

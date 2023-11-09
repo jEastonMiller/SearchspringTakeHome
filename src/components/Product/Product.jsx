@@ -6,6 +6,8 @@ function Product( {
       name,
       price,
       msrp,
+      handleAddToCart,
+      cart
     }) {
     const [prodMsrp, setProdMsrp] = useState(parseInt(msrp));
     const [prodPrice, setProdPrice] = useState(parseInt(price));
@@ -26,7 +28,12 @@ function Product( {
               {msrpActive && <p className={styles.msrp}><s>${prodMsrp}</s></p>}
             </div>
             <button
-            
+              onClick={(e) => handleAddToCart({
+                thumbnail,
+                name,
+                price,
+                msrp,
+              }, cart)}
             >Add To Cart</button>
           </div>
         </div>

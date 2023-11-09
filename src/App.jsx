@@ -5,8 +5,10 @@ import { ProductDisplay } from "./containers/containers";
 function App() {
   const [pagination, setPagination] = useState(null);
   const [currentProducts, setCurrentProducts] = useState(null);
-  const [searchQuery, setSearchQuery] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
   const [trendingList, setTrendingList] = useState(null);
+  const [cart, setCart] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
   const [preLoadPrev, setPreLoadPrev] = useState(null);
   const [preLoadNext, setPreLoadNext] = useState(null);
 
@@ -43,10 +45,34 @@ function App() {
     }
   }
 
+  const handleAddToCart = (product, currentCart) => {
+    const newCart = JSON.parse(JSON.stringify(currentCart));
+    product.quantity = 1;
+    let cached = false;
+    let totalCartCount = 0;
+    for (let existingItem of newCart) {
+      if(existingItem.thumbnail === product.thumbnail) {
+        existingItem.quantity += 1
+        cached = true;
+      } 
+      totalCartCount += existingItem.quantity;
+    }
+    if (!cached) {
+      newCart.push(product);
+      totalCartCount += 1
+    } 
+    setCartCount(totalCartCount);
+    setCart(newCart);
+  }
+
+  const handleCartClick = () => {
+    console.log(cart);
+  }
+
   const handleGoHome = () => {
     setPagination(null);
     setCurrentProducts(null);
-    setSearchQuery(null);
+    setSearchQuery('');
   }
 
   useEffect(() => {
@@ -61,11 +87,11 @@ function App() {
 
   return (
     <div>
-      <NavBar trendingList={trendingList} goHome={handleGoHome} />
+      <NavBar trendingList={trendingList} goHome={handleGoHome} cartCount={cartCount} handleCartClick={handleCartClick} />
       { !searchQuery && trendingList && <Landing trendingList={trendingList} setSearchQuery={setSearchQuery} />}
-      <Searchbar setSearchQuery={setSearchQuery} />
+      <Searchbar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
       { pagination && <PageNav pagination={pagination} searchQuery={searchQuery} handleSearch={handleSearch} />}
-      { currentProducts && <ProductDisplay productList={currentProducts} />}
+      { currentProducts && <ProductDisplay productList={currentProducts} handleAddToCart={handleAddToCart} cart={cart}/>}
       { pagination && <PageNav pagination={pagination} searchQuery={searchQuery} handleSearch={handleSearch} />}
     </div>
   )

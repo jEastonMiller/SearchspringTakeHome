@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./Searchbar.module.css";
 
-function Searchbar({ setSearchQuery }) {
-  const [currentInput, setCurrentInput] = useState('');
+function Searchbar({ setSearchQuery, searchQuery }) {
+  const [currentInput, setCurrentInput] = useState(searchQuery);
 
   const inputRef = useRef(null);
   const buttonRef = useRef(null);

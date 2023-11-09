@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./NavBar.module.css";
 import logo from "../../../public/assets/logo.png"
 
-function NavBar( { goHome, trendingList } ) {
+function NavBar( { goHome, trendingList, cartCount, handleCartClick } ) {
     return (
       <header className={styles.navBar}>
         <div 
@@ -27,8 +27,11 @@ function NavBar( { goHome, trendingList } ) {
         <div
           id={styles.cartDisplay}
         >
-          <button id={styles.cartButton}></button>
-          <p>0</p>
+          <button 
+            onClick={(e) => handleCartClick()}
+            id={styles.cartButton}
+          ></button>
+          <p>{cartCount}</p>
         </div>
         
       </header>
