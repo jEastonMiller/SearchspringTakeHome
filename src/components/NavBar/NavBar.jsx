@@ -46,7 +46,9 @@ function NavBar( { goHome, trendingList, cartCount, handleCartClick } ) {
           onClick={(e) => handleCartClick()}
           id={styles.cartButton}
         ></button>
-        <p>{cartCount}</p>
+        <p
+          data-cy="cartCount"
+        >{cartCount}</p>
       </div>
     </header>
   )

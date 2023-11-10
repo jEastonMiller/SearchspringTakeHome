@@ -18,7 +18,10 @@ function Product( {
   }, [])  
 
   return (
-    <div className={styles.product}>
+    <div 
+      data-cy="product"
+      className={styles.product}
+    >
       <img src={thumbnail} alt={name}></img>
       <div>
         <p className={styles.name}>{name}</p>
@@ -28,6 +31,7 @@ function Product( {
             {msrpActive && <p className={styles.msrp}><s>${prodMsrp}</s></p>}
           </div>
           <button
+            data-cy="add-to-cart"
             onClick={(e) => handleAddToCart({
               thumbnail,
               name,

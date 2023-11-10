@@ -63,6 +63,7 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
           {skipNav && pagination.previousPage === 0 && <button id={styles.skipBack} disabled></button>}
           {skipNav && pagination.previousPage !== 0 && 
             <button 
+              data-cy="skipBackwardButton" 
               id={styles.skipBack} 
               onClick={(e) => handleSearch(searchQuery)}
             ></button>
@@ -112,7 +113,8 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
           } 
           {skipNav && pagination.currentPage === pagination.totalPages && <button id={styles.skipForward} disabled></button>}
           {skipNav && pagination.currentPage !== pagination.totalPages && 
-            <button 
+            <button
+              data-cy="skipForwardButton" 
               id={styles.skipForward}
               onClick={(e) => handleSearch(searchQuery, pagination.totalPages)}
             ></button>

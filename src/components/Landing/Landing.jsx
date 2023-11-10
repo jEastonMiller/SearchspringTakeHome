@@ -32,6 +32,7 @@ function Landing( { trendingList, setSearchQuery } ) {
           key={index}
           >
             <a
+              data-cy="trend"
               className={styles.trend}
               onClick={(e) => setSearchQuery(e.target.innerHTML)}
             >{trend[0].toUpperCase() + trend.slice(1)}</a>
