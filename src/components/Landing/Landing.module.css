@@ -1,32 +1,19 @@
-@-webkit-keyframes fade {
-  0% {opacity: 0;}
-  20% {opacity: 1;}
-  85% {opacity: 1;}
-  98% {opacity: 0;}
-  100% {opacity: 0;}
-}
-@keyframes fade {
-  0% {opacity: 0;}
-  20% {opacity: 1;}
-  85% {opacity: 1;}
-  98% {opacity: 0;}
-  100% {opacity: 0;}
-}
 .landing {
   display: flex;
+  width: 90vw;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 3.0em;
   overflow: hidden;
-  
+  color: rgba(196, 190, 176, 1.0);
+  margin-top: 1.0em;
 }
 
 .landing img {
   width: 120%;
   height: calc(0.35 * 90vw);
   object-fit: cover;
-
+  margin-bottom: 1.0em;
 }
 
 #trendContainer {
@@ -35,18 +22,12 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  width: 90%;
-  margin: 0;
-  padding: 0;
+  width: 100%;
   transition: color 0.4s;
 }
 
-#trendContainer p {
-  padding: 0.5em 0;
-}
-
 .trend {
-  padding: 0.5em 0;
+  margin: 0 0.5em;
 }
 
 .trend:hover {
@@ -55,3 +36,14 @@
 }
 
 
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.2em;
+  }
+
+  .landing img {
+    width: 120%;
+    height: calc(0.6 * 90vw);
+    padding: 0 5.0em;
+  }
+}

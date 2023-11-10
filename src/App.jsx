@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Landing, NavBar, PageNav, Product, Searchbar } from "./components/components";
+import { Landing, NavBar, PageNav, Searchbar, Footer } from "./components/components";
 import { ProductDisplay } from "./containers/containers";
 
 function App() {
@@ -9,8 +9,6 @@ function App() {
   const [trendingList, setTrendingList] = useState(null);
   const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
-  const [preLoadPrev, setPreLoadPrev] = useState(null);
-  const [preLoadNext, setPreLoadNext] = useState(null);
 
   const handleSearch = async (query = '', page = 1) => {
     try {
@@ -19,7 +17,6 @@ function App() {
         let searchResults = await searchResultsJSON.json();
         setPagination(searchResults.pagination);
         setCurrentProducts(searchResults.results);
-        console.log(searchResults)
       }
       searchReq();
     } catch (err) {
@@ -37,7 +34,7 @@ function App() {
         for(let product of products) {
           trendingOutput.push(product["product_type_unigram"]);
         }
-        setTrendingList([... new Set(trendingOutput)]);
+        setTrendingList([... new Set(trendingOutput.slice(0, 8))]);
       }
       searchReq();
     } catch (err) {
@@ -76,23 +73,29 @@ function App() {
   }
 
   useEffect(() => {
-    handleInitiation();
+    handleInitiation('', Math.floor( ( Math.random() * 185 ) + 1));
+
+    const repo = 'https://github.com/jEastonMiller/SearchspringTakeHome';
+    const linkedIn = 'https://www.linkedin.com/in/j-easton-miller/'
+    console.info('HERE IS THE REPO: ', repo)
+    console.info('ADD ME ON LINKEDIN!    ', linkedIn)
   }, [])
 
   useEffect(() => {
     if (searchQuery) handleSearch(searchQuery, 1);
-
   }, [searchQuery])
-
 
   return (
     <div>
-      <NavBar trendingList={trendingList} goHome={handleGoHome} cartCount={cartCount} handleCartClick={handleCartClick} />
-      { !searchQuery && trendingList && <Landing trendingList={trendingList} setSearchQuery={setSearchQuery} />}
-      <Searchbar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
-      { pagination && <PageNav pagination={pagination} searchQuery={searchQuery} handleSearch={handleSearch} />}
-      { currentProducts && <ProductDisplay productList={currentProducts} handleAddToCart={handleAddToCart} cart={cart}/>}
-      { pagination && <PageNav pagination={pagination} searchQuery={searchQuery} handleSearch={handleSearch} />}
+      <div id="home">
+        <NavBar trendingList={trendingList} goHome={handleGoHome} cartCount={cartCount} handleCartClick={handleCartClick} />
+        <Searchbar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
+        { !searchQuery && trendingList && <Landing trendingList={trendingList} setSearchQuery={setSearchQuery} />}
+        { pagination && <PageNav pagination={pagination} searchQuery={searchQuery} handleSearch={handleSearch} />}
+        { currentProducts && <ProductDisplay productList={currentProducts} handleAddToCart={handleAddToCart} cart={cart}/>}
+        { pagination && <PageNav pagination={pagination} searchQuery={searchQuery} handleSearch={handleSearch} position={'bottom'} />}
+      </div>
+      <Footer goHome={handleGoHome}/>
     </div>
   )
 }

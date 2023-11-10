@@ -15,9 +15,16 @@
   background-position: center center;
   -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
   mask-image: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6) 60%, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0) 100%);
+  transition: height 0.75s;
 }
 
+.mobileMenuButton {
+  display: none;
+}
 
+#mobileMenu {
+  display: none;
+}
 
 .navBar * {
   display: inline;
@@ -41,7 +48,7 @@
 .logo {
   margin: 2em;
   font-size: 0.65em;
- 
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items:center;
@@ -62,7 +69,6 @@
   margin: 1.5em;
   font-family: Castoro Titling;
   font-size: 1.0em;
-
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -89,5 +95,62 @@
 }
 
 
+@media (max-width: 800px) {
+  .navBar {
+    height: auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: height 0.75s;
+  }
 
+  .mobileMenuButton {
+    height: 2.5em;
+    width: 2.5em;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2em;
+    background: none;
+    background-image: url('../../../public/assets/ham_menu_icon.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .logo {
+    margin-bottom: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  #mainNav {
+    display: none;
+  }
+
+  #mobileMenu {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    width: 100%;
+    margin-bottom: 10vw;
+    margin-top:0;
+  }
+
+  #mobileMenu a {
+    font-size: 0.5em;
+    cursor: pointer;
+  }
+  
+  #cartDisplay {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
    

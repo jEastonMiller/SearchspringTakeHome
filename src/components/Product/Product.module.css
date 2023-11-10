@@ -46,8 +46,6 @@
   flex-direction: column;
 }
 
-
-
 .productDetails button {
   margin-bottom: 1.0em;
   align-self: flex-end;
@@ -106,4 +104,14 @@
   padding-bottom: 0;
   align-self: flex-end;
   display: inline-block;
+}
+
+@media (max-width: 480px) {
+  .product {
+    width: 80%;
+  }
+
+  .productDetails button {
+    padding: 1.5em;
+  }
 }

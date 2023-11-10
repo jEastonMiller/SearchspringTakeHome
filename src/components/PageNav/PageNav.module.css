@@ -68,3 +68,30 @@ button:disabled {
 #skipForward {
   background-image: url('../../../public/assets/f_skip.png'); 
 }
+
+@media (max-width: 480px) {
+  .pageNav {
+    font-size: 0.9em;
+  }
+  
+  .pageLink, .currentSelection {
+    margin-left: 0.15em;
+    margin-right: 0;
+  }
+
+  .pageEl {
+    margin-left: 0.15em;
+    margin-right: 0.15em;
+  }
+
+  button {
+    height: 1.5em;
+    width: 1.5em;
+    background: none;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: none;
+    cursor: pointer;
+  }
+}

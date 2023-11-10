@@ -22,15 +22,8 @@ function Landing( { trendingList, setSearchQuery } ) {
     };
   }, [images, currentImg]);
 
-
-
   return (
     <div className={styles.landing}>
-      <img 
-        src={currentImg} 
-        alt="landingImage"
-      ></img>
-      <h1>Shop For:</h1>
       <div
         id={styles.trendContainer}
       >
@@ -45,6 +38,10 @@ function Landing( { trendingList, setSearchQuery } ) {
           </p>
         ))}
       </div>
+      <img 
+        src={currentImg} 
+        alt="landingImage"
+      ></img>
     </div>
   )
 }

@@ -1,30 +1,68 @@
-# SearchspringTakeHome
 
-https://searchspring.zendesk.com/hc/en-us/sections/115000119223-Search-API
+![alt text](https://i.imgur.com/u0QKheF.png)
 
-You can ignore the "Request Headers" section of any of the API documentation. You should only need to use "q", "resultsFormat" and "page" query parameters.
+For [Midwest Farmhouse](https://jeastonmiller.github.io/SearchspringTakeHome/) I was asked to create a product display page using the Searchspring API and deploy it. The site includes the following features: 
 
-We don’t expect you to build out a full implementation we just need the following:
+- A functioning searchbar that utilizes Searchspring API with user queries to fetch results with the input element's value by either clicking the search button or on pressing "Enter".
+- Display the resulting products specifically including the thumbnail, product name, price, and if the MSRP was greater than the price, the MSRP with a strikethrough as well.
+- Dynamic pagination with forward and backward buttons that would disable at appropriate times.
 
-    An input box for a search bar with a search button next to it.
-    When someone types into the search bar and hits enter or clicks the search button display product results below the search bar.
-        Use site ID “scmq7n” for this example.
-        You’ll want to use “resultsFormat=native” as part of the API request to get your results back as JSON.
-        You’ll want to pass the search query using the “q” parameter.
-        Display the product image using the “thumbnailImageUrl”, the product “name” and “price”.
-        If the product has an “msrp” field and it’s greater than “price” field, display the “msrp” next to the price crossed out.
-    Above and below the results show pagination with next and previous buttons. You could also display some pages before/after the current page.
-        If you’re on the first page, you shouldn’t show the previous button or it should be disabled.
-        If you’re on the last page, you shouldn’t show the next button or it should be disabled.
-        You’ll be able to change the page by making another request to our Search API with the “page” parameter set to the page you’d like to request.
-    I’ve included a sample search request below that does a search for jeans and gets the 2nd page of results.
-        http://api.searchspring.net/api/search/search.json?siteId=scmq7n&q=jeans&resultsFormat=native&page=2
-    Allow your creativity to shine for the design. It doesn’t not have to be the sole focus, but we would like to see what you’re capable of. If you want to see an example of what a full integration looks like see the following links:
-        https://condescending-bassi-4d660a.netlify.app
-        https://shopily.netlify.app
 
-You can use whatever JS frameworks or CSS libraries you’d like. We’ll not only be reviewing the JS functionality, but also the design. We’re eagerly awaiting to see what you can come up with. If you need any help or guidance, please don't hesitate to ask.
+Other features I added include: 
 
-You can deliver this challenge to us by deploying the challenge somewhere on the web (Github Pages, Netlify, etc) and send us a link to a repository with your code.
+- More dynamic pagination with skip buttons rendering conditionally based on totalPages field returned from the API call.
+- A landing page with dynamically rendered "trends" populated by a random search of the entire site catalogue.
+- A cart save feature that will actually populate a cart with items and quanities. While there isn't a cart display, clicking the cart button will log the cart object in the console.
+- Custom assets including logos, banners, icons, and backgrounds I personally developed in photoshop.
+- Limited component testing using Cypress.
+- Implemented break points using CSS media queries for mobile friendly viewing.
+- Responsive 
 
-There is no hard timeline, so feel free to take as much time as you'd like. Some people take up to a week; some people take a day or two. However, completing the challenge does determine whether we move forward in the interview process or not.
+<!-- https://ileriayo.github.io/markdown-badges/#markdown-badges -->
+
+## General Approach
+
+When thinking about how I wanted to approach building out this functionality, I considered a few options. I thought about using Vanilla Javascript but once I decided on the features I wanted to include regarding the pagination, React.js made more sense for conditionally rendering the forward, back, forwardSkip, and backSkip buttons as well as dynamically building out the product display using flexbox. I quickly whiteboarded out a general design and named some components to get an idea of the file structure and architecture. This is also where I started to consider how the handlers would be dispersed efficiently throughout the application with minimal prop drilling. I wanted faster load times and smaller file sizes so I decided to use Webpack as a bundler. I've used vite before but didn't like it's abstraction so I went with Webpack 5.
+
+After building out the basic architecture, I then considered how I would deploy it. I have deployed on aws in the past but I wanted to use a free option. I have used vercel before but decided I wanted to use github pages for their integrated deployment support and the process seemed very straightforward. 
+
+Once I had a successful deployment, all there was left to do was build out all the features and that is what you see here. 
+
+## How To Run
+
+- npm install
+- npm build 
+- npm run dev
+
+
+<div align='center'>
+
+## Made Using
+
+</div>
+<!-- https://ileriayo.github.io/markdown-badges/#markdown-badges -->
+<div align='center'>
+
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+[![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
+![cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e)
+![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
+![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
+
+</div>
+
+</br>
+With a bit more time, I would do a couple things:
+
+- Add more testing.
+- Implement routing using react router and build out a few simple static pages for the "About Us" and "Contact" links in the navigation bar.
+- Create a dropdown for the "Products" link in the navigation bar that would display categories scraped from the Searchspring API.
+- More accessibility for screen readers, refining the semantic HTML, and adding more robust "tab" navigation.
+
+
+Connect with me on LinkedIn
+</br>
+[![LinkedIn](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/j-easton-miller/) 

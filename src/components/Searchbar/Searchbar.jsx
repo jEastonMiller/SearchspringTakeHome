@@ -23,16 +23,26 @@ function Searchbar({ setSearchQuery, searchQuery }) {
     focus();
   },[])
 
+  useEffect(() => {
+    setCurrentInput(searchQuery)
+  }, [searchQuery])
+
   return (
-    <div className={styles.searchbar}>
+    <div 
+      data-cy="searchbar"
+      className={styles.searchbar}
+    >
         <input
+          data-cy="searchInput"
           onChange={handleOnChange}
           onClick={focus}
           onKeyDown={handleKeyDown}
           value={currentInput}
+          autoCapitalize="none"
           ref={inputRef}
         ></input>
         <button
+          data-cy="searchButton"
           onClick={(e) => setSearchQuery(currentInput)}
           ref={buttonRef}
         ></button>

@@ -36,5 +36,5 @@ module.exports = {
   devServer: {
     port: 3000,
   },
-  plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
+  plugins: [new HtmlWebpackPlugin({ template: './src/index.html', favicon: './public/favicon.ico', })],
 }

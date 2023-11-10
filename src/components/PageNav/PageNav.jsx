@@ -3,14 +3,11 @@ import styles from "./PageNav.module.css";
 
 function PageNav( { pagination, handleSearch, searchQuery } ) {
     const [pager, setPager] = useState(null);
-    // const [currentPage, setCurrentPage] = useState(pagination.currentPage);
     const [skipNav, setSkipNav] = useState(false);
 
     const handlePager = () => {
       const pagerFormat = []
-
-      if(pagination.totalPages > 25) {
-        
+      if(pagination.totalPages > 10) {
         if (pagination.totalPages - pagination.currentPage < 6) {
           const total = pagination.totalPages
           for (let i = 1; i <= 3; i++) {
@@ -59,6 +56,7 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
     }, [pagination])
 
     if(pagination.totalResults === 0) return;
+    
     return (
       <div className={styles.pageNav}>
         {pager && <div>
@@ -72,6 +70,7 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
           {pagination.previousPage === 0 ? 
             <button 
               id={styles.back}
+              data-cy="previousPageButton"
               disabled
             ></button> : 
             <button
@@ -88,6 +87,7 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
             } else if (pagination.currentPage === page.number) {
               return <button
                       className={styles.currentSelection}
+                      data-cy="currentSelection"
                       key={index}
                       disabled
                      >{page.number}</button> 
@@ -102,6 +102,7 @@ function PageNav( { pagination, handleSearch, searchQuery } ) {
           {pagination.nextPage === 0 ? 
             <button 
               id={styles.forward}
+              data-cy="nextPageButton"
               disabled
             ></button> : 
             <button
